@@ -10,6 +10,7 @@ import { jsx } from 'theme-ui'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { WindowLocation } from '@reach/router'
+import { Box } from 'rebass'
 
 import Header from './header'
 import Navigation from './navigation'
@@ -34,14 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   return (
     <React.Fragment>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        sx={{
-          margin: '0 auto',
-          maxWidth: 9,
-          p: 3,
-          pt: 0,
-        }}
-      >
+      <Box mx="auto" maxWidth={9} p={3} pt={0}>
         <main>
           <Navigation location={location} />
           {children}
@@ -51,7 +45,7 @@ const Layout: React.FC<LayoutProps> = ({ children, location }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
+      </Box>
     </React.Fragment>
   )
 }

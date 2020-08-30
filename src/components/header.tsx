@@ -2,26 +2,22 @@
 import { jsx, Styled } from 'theme-ui'
 import { Link } from 'gatsby'
 import React from 'react'
+import { Heading } from 'rebass'
 
 interface HeaderProps {
   siteTitle: string
 }
 
 const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
-  <header
-    sx={{
-      mb: 3,
-    }}
-  >
+  <header sx={{ mb: 3, backgroundColor: 'contrast' }}>
     <div
       sx={{
-        backgroundColor: 'contrast',
         maxWidth: 9,
         p: 3,
         margin: '0 auto',
       }}
     >
-      <Styled.h1
+      <Heading
         sx={{
           m: 0,
           color: 'primary',
@@ -36,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
-      </Styled.h1>
+      </Heading>
     </div>
   </header>
 )

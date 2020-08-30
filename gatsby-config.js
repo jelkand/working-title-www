@@ -3,6 +3,16 @@ module.exports = {
     title: `Working Title`,
     description: `The infamous review of IMDB's top 250 English language movies.`,
     author: `Working Title`,
+    menuLinks: [
+      {
+        name: `Home`,
+        url: `/`,
+      },
+      {
+        name: `List`,
+        url: `/list`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
