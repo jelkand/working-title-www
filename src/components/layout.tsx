@@ -5,13 +5,22 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { WindowLocation } from '@reach/router'
 
 import Header from './header'
-import './layout.css'
+import Navigation from './navigation'
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  // title?: Maybe<string>
+  location: WindowLocation<WindowLocation['state']>
+  children: React.ReactNode
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,23 +32,27 @@ const Layout: React.FC = ({ children }) => {
   `)
 
   return (
-    <>
+    <React.Fragment>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+        sx={{
+          margin: '0 auto',
+          maxWidth: 9,
+          p: 3,
+          pt: 0,
         }}
       >
-        <main>{children}</main>
+        <main>
+          <Navigation location={location} />
+          {children}
+        </main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 
