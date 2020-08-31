@@ -1,3 +1,5 @@
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+
 module.exports = {
   siteMetadata: {
     title: `Working Title`,
@@ -38,7 +40,15 @@ module.exports = {
       },
     },
     'gatsby-plugin-theme-ui',
-    `gatsby-plugin-graphql-codegen`,
+    // `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `akilq4l3k7d2`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
