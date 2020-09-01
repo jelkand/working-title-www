@@ -2,6 +2,8 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 
+import { useTable } from 'react-table'
+
 import { Box, Flex } from 'rebass'
 
 interface TableProps<T> {
@@ -11,11 +13,7 @@ interface TableProps<T> {
 
 const TableHeader = (elements: string[]) => {}
 
-const Table = <T,>({ data, maxRows }: TableProps<T>) => {
-  const keys = Object.keys(data[0])
-
-  // const headerLine =
-
+const Table = <T,>({ data }: TableProps<T>) => {
   return (
     <Box as="table">
       <Box bg="contrast" color="primary" as="tr">

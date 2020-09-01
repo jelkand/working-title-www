@@ -2375,6 +2375,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-table@^7.0.22":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.0.22.tgz#5dd97d7c2b1978338ed3f3f634da0d5b0362998d"
+  integrity sha512-RAzjB7Udv23QPuIuNNRn8VBldmcFobqpNqLWXh0FXVVyIye76muzfn01WZdcTIEfmQjHts7bjJSQQVabLQgTcA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "16.9.47"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.47.tgz#fb092936f0b56425f874d0ff1b08051fdf70c1ba"
@@ -12504,6 +12511,11 @@ querystringify@^2.1.1:
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
   integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
+ramda@^0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.1.tgz#66fc2df3ef873874ffc2da6aa8984658abacf5c9"
+  integrity sha512-PgIdVpn5y5Yns8vqb8FzBUEYn98V3xcPgawAkkgj0YJ0qDsnHCiNmZYfOGMgOvoB0eWFLpYbhxUR3mxfDIMvpw==
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -12730,6 +12742,11 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-table@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.5.0.tgz#87326d92cdffbbf970f49b395bcafc3f84989ddf"
+  integrity sha512-hLsbNqLJkkYiATVteM8mthP8y5vnLPB2qdi9FeGZjsvb2m5vxj6cavIgk35oulvBmYD6Kox0HFfI332HPZpC7w==
 
 react@^16.12.0, react@^16.8.0:
   version "16.13.1"
