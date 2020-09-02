@@ -35,16 +35,12 @@ const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   return (
     <React.Fragment>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Box mx="auto" maxWidth={9} p={3} pt={0}>
+      <Box mx="auto" maxWidth={9} p={3} pt={0} pb={6}>
         <main>
           <Navigation location={location} />
           {children}
         </main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <footer></footer>
       </Box>
     </React.Fragment>
   )

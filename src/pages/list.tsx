@@ -2,34 +2,39 @@
 import { jsx } from 'theme-ui'
 import React, { useMemo } from 'react'
 import { Link, PageProps, graphql } from 'gatsby'
-import { Flex, Box, Button } from 'rebass'
-import { useTable, usePagination, UsePaginationOptions } from 'react-table'
+import { Flex, Box, Text } from 'rebass'
+import {
+  useTable,
+  usePagination,
+  UsePaginationOptions,
+  Column,
+} from 'react-table'
 
 import Layout from '../components/layout'
 // import Image from '../components/image'
 import SEO from '../components/seo'
-// import Table from '../components/table'
+import Table from '../components/table'
 
-declare module 'react-table' {
-  // namespace 'react-table' {
-  interface TableOptions<D extends object = {}>
-    extends UsePaginationOptions<D> {}
-  // }
+interface ContentfulFilm {
+  id: string
+  title: string
+  imdbRanking: number
 }
 
-const ListPage: React.FC<PageProps<{ allContentfulFilm: { nodes: any } }>> = ({
-  data,
-  location,
-}) => {
-  const columns = useMemo(
+const ListPage: React.FC<PageProps<{
+  allContentfulFilm: { nodes: ContentfulFilm[] }
+}>> = ({ data, location }) => {
+  const columns: Array<Column<ContentfulFilm>> = useMemo(
     () => [
       {
         Header: 'IMDb Ranking',
         accessor: 'imdbRanking',
+        width: '90',
       },
       {
         Header: 'Title',
         accessor: 'title',
+        // width: '0',
       },
     ],
     []
@@ -37,69 +42,15 @@ const ListPage: React.FC<PageProps<{ allContentfulFilm: { nodes: any } }>> = ({
 
   const tableData = useMemo(() => data.allContentfulFilm.nodes, [])
 
-  const tableInstance = useTable(
-    { columns, data: tableData, initialState: { pageSize: 25 } },
-    usePagination
-  )
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    prepareRow,
-    pageOptions,
-    page,
-    state: { pageIndex, pageSize },
-    // gotoPage,
-    previousPage,
-    nextPage,
-    // setPageSize,
-    canPreviousPage,
-    canNextPage,
-  } = tableInstance
-
   return (
     <Layout location={location}>
       <SEO title="The List" />
-
-      <Box as="table" {...getTableProps()}>
-        <Box as="thead">
-          {headerGroups.map(hg => (
-            <Box as="tr" {...hg.getHeaderGroupProps()}>
-              {hg.headers.map(col => (
-                <Box as="th" {...col.getHeaderProps()}>
-                  {col.render('Header')}
-                </Box>
-              ))}
-            </Box>
-          ))}
-        </Box>
-        <Box as="tbody" {...getTableBodyProps()}>
-          {page.map(row => {
-            prepareRow(row)
-            return (
-              <Box as="tr" {...row.getRowProps()}>
-                {row.cells.map(cell => (
-                  <Box as="td" {...cell.getCellProps()}>
-                    {cell.render('Cell')}
-                  </Box>
-                ))}
-              </Box>
-            )
-          })}
-        </Box>
-      </Box>
-
+      <Text fontSize={3}>
+        IMDb's top 250 English-language movies, collected in November of 2019
+      </Text>
+      <Box height={3} />
       <Box>
-        <Button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          Previous Page
-        </Button>
-        <Box display="inline-block" mx={3}>
-          Page {pageIndex + 1} of {pageOptions.length}
-        </Box>
-        <Button onClick={() => nextPage()} disabled={!canNextPage}>
-          Next Page
-        </Button>
+        <Table<ContentfulFilm> data={tableData} columns={columns} />
       </Box>
     </Layout>
   )

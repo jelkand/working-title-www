@@ -40,7 +40,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-theme-ui',
-    // `gatsby-plugin-graphql-codegen`,
+    // `gatsby-plugin-graphql-codegen`, // disabled as this doesn't play nice with contentful
     {
       resolve: `gatsby-source-contentful`,
       options: {

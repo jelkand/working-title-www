@@ -14,7 +14,7 @@ interface NavigationProps {
   location: WindowLocation<WindowLocation['state']>
 }
 
-const Divider = () => <Box height="1px;" width="100%" bg="contrast" />
+const Divider = () => <Box height="2px" width="100%" bg="contrast" />
 
 const renderLink = (pathname: string) => (
   menuLink: Maybe<SiteSiteMetadataMenuLinks>
@@ -27,7 +27,7 @@ const renderLink = (pathname: string) => (
           to={menuLink.url!}
           sx={{
             textDecoration: isCurrentPage ? 'underline' : 'none',
-            fontSize: 4,
+            fontSize: 3,
             fontWeight: isCurrentPage ? 'bold' : undefined,
           }}
         >
@@ -56,7 +56,7 @@ const Navigation: React.FC<NavigationProps> = ({ location }) => {
 
   const menuLinks = data.site?.siteMetadata?.menuLinks
   return (
-    <Box py={2}>
+    <Box py={2} pb={4}>
       <Divider />
       <Flex justifyContent="space-evenly">
         {menuLinks && menuLinks.map(renderLink(location.pathname))}

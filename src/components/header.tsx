@@ -1,39 +1,42 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { Link } from 'gatsby'
 import React from 'react'
-import { Heading } from 'rebass'
+import { Heading, Box } from 'rebass'
 
 interface HeaderProps {
   siteTitle: string
 }
 
 const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
-  <header sx={{ mb: 3, backgroundColor: 'contrast' }}>
-    <div
+  <header sx={{ mb: 3 }}>
+    <Box
       sx={{
         maxWidth: 9,
         p: 3,
         margin: '0 auto',
+        textAlign: 'center',
       }}
     >
       <Heading
-        sx={{
-          m: 0,
-          color: 'primary',
-        }}
+        as="h1"
+        m={0}
+        mx="auto"
+        display="block"
+        fontSize={6}
+        fontWeight="bold"
       >
         <Link
           to="/"
           sx={{
-            color: 'primary',
+            color: 'text',
             textDecoration: 'none',
           }}
         >
           {siteTitle}
         </Link>
       </Heading>
-    </div>
+    </Box>
   </header>
 )
 
