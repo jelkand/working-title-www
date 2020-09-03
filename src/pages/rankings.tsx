@@ -4,7 +4,6 @@ import React, { useMemo } from 'react'
 import { Link, Page, PageProps, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import Image from '../components/image'
 import SEO from '../components/seo'
 import { Column } from 'react-table'
 import { transpose, indexBy, prop, range, map } from 'ramda'
@@ -17,11 +16,9 @@ interface RankedContentfulFilm {
 }
 
 interface RankingsPageData {
-  // data: {
   allContentfulReviewer: {
     nodes: Array<Reviewer>
   }
-  // }
 }
 
 interface Reviewer {
@@ -37,6 +34,7 @@ interface ReviewerRanking {
   mikeRanking: string
   jackRanking: string
 }
+
 const AboutPage: React.FC<PageProps<RankingsPageData>> = ({
   data,
   location,
@@ -83,8 +81,6 @@ const AboutPage: React.FC<PageProps<RankingsPageData>> = ({
     reviewerName => keyedRankings[reviewerName].rankings
   )
 
-  // const indexes = range(0, orderedRankings[0].length)
-
   const transposed = transpose(orderedRankings)
 
   const mapped: Array<ReviewerRanking> = transposed.map((film, idx) => ({
@@ -96,6 +92,7 @@ const AboutPage: React.FC<PageProps<RankingsPageData>> = ({
   })) as Array<ReviewerRanking>
 
   const tableData = useMemo(() => mapped, [])
+
   return (
     <Layout location={location}>
       <SEO title="About" />

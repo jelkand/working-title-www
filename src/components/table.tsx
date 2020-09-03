@@ -1,7 +1,5 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import React from 'react'
-
 import { Box, Button, Flex, Text } from 'rebass'
 
 import { useTable, usePagination, Column, useFlexLayout } from 'react-table'
@@ -25,7 +23,7 @@ const Table = <T extends object>({ data, columns }: TableProps<T>) => {
     prepareRow,
     pageOptions,
     page,
-    state: { pageIndex, pageSize },
+    state: { pageIndex },
     // gotoPage,
     previousPage,
     nextPage,
