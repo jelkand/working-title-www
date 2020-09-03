@@ -46,7 +46,7 @@ const ListPage: React.FC<PageProps<{
     <Layout location={location}>
       <SEO title="The List" />
       <Text fontSize={3}>
-        IMDb's top 250 English-language movies, collected in November of 2019
+        IMDb's top 250 English-language movies, collected in November of 2019.
       </Text>
       <Box height={3} />
       <Box>

@@ -14,6 +14,14 @@ module.exports = {
         name: `List`,
         url: `/list`,
       },
+      {
+        name: 'Rankings',
+        url: '/rankings',
+      },
+      {
+        name: 'Reviewers',
+        url: '/reviewers',
+      },
     ],
   },
   plugins: [

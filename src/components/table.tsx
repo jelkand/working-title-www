@@ -35,23 +35,14 @@ const Table = <T extends object>({ data, columns }: TableProps<T>) => {
   } = tableInstance
 
   return (
-    <Box
-      sx={
-        {
-          // boxShadow: '0px 1px 1px -1px rgba(0,0,0,0.2);',
-          // boxShadow: 'rgba(0, 0, 0, 0.125) 0px 0px 4px',
-        }
-      }
-    >
+    <Box>
       <Box
         as="table"
         mx="auto"
         {...getTableProps()}
         width="100%"
         maxWidth="100%"
-        // sx={{
-        //   borderRadius: 2,
-        // }}
+        sx={{ overflow: 'auto' }}
       >
         <Box as="thead">
           <Box
@@ -68,7 +59,6 @@ const Table = <T extends object>({ data, columns }: TableProps<T>) => {
                     minHeight={3}
                     sx={{
                       lineHeight: 2,
-                      //  textAlign: 'left'
                     }}
                     ml={2}
                   >
@@ -82,7 +72,6 @@ const Table = <T extends object>({ data, columns }: TableProps<T>) => {
         <Box as="tbody" {...getTableBodyProps()}>
           {page.map((row, idx) => {
             prepareRow(row)
-            // const bg = idx % 2 === 1 ? 'muted' : undefined
             return (
               <Box
                 as="tr"
@@ -99,7 +88,11 @@ const Table = <T extends object>({ data, columns }: TableProps<T>) => {
                     as="td"
                     {...cell.getCellProps()}
                     ml={2}
-                    sx={{ lineHeight: 2, textAlign: 'center' }}
+                    sx={{
+                      lineHeight: 2,
+                      textAlign: 'center',
+                      fontWeight: idx === 0 ? 'bold' : 'body',
+                    }}
                   >
                     {cell.render('Cell')}
                   </Box>
@@ -109,26 +102,28 @@ const Table = <T extends object>({ data, columns }: TableProps<T>) => {
           })}
         </Box>
       </Box>
-      <Box width="100%" height="2px" bg="text" pY={2} />
-      <Flex width="100%" justifyContent="space-evenly" height={4} p={2}>
-        <Button
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-          variant="navButton"
-        >
-          <Text width="100%">Previous</Text>
-        </Button>
-        <Box display="inline-block" mx={3}>
-          {pageIndex + 1} / {pageOptions.length}
-        </Box>
-        <Button
-          variant="navButton"
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-        >
-          <Text width="100%">Next</Text>
-        </Button>
-      </Flex>
+      <Box width="100%" height="2px" bg="contrast" my={2} />
+      {pageOptions.length > 1 && (
+        <Flex width="100%" justifyContent="space-evenly" height={4} p={2}>
+          <Button
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+            variant="navButton"
+          >
+            <Text width="100%">Previous</Text>
+          </Button>
+          <Box display="inline-block" mx={3}>
+            {pageIndex + 1} / {pageOptions.length}
+          </Box>
+          <Button
+            variant="navButton"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+          >
+            <Text width="100%">Next</Text>
+          </Button>
+        </Flex>
+      )}
     </Box>
   )
 }
